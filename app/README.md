@@ -2,7 +2,7 @@
 
 A sample application that showcases various components that come built-in with NativeBase v3.
 
-## Example
+## Level
 
 Here is a screenshot of the sample application:
 

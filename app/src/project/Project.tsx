@@ -1,8 +1,9 @@
-import {Example} from "./screens/Example";
+import {Level} from "./screens/Level";
 import {BaseTemplate} from "../KitchenHelper/templates/BaseTemplate";
 import {RegisteredRoutesMap} from "../KitchenHelper/navigation/RegisteredRoutesMap";
 import {MenuItem} from "../KitchenHelper/navigation/MenuItem";
 import {MyMenuRegisterer} from "../KitchenHelper/navigation/MyMenuRegisterer";
+import {GameTemplate} from "./templates/GameTemplate";
 
 export default class Project {
 
@@ -12,14 +13,14 @@ export default class Project {
 
 	static registerRoutes(){
 		// Resource detail
-		RegisteredRoutesMap.registerRoute(Example, BaseTemplate, "Example", "example");
+		RegisteredRoutesMap.registerRoute(Level, GameTemplate, "Level", "level");
+
+		RegisteredRoutesMap.setInitialRouteName("level");
 
 		// Side Menu
 
 		// Side Menu for User
-		let userMenu = new MenuItem("topExample", "TopExample", null, null, null, null, true);
-		MyMenuRegisterer.registerCommonMenu(userMenu);
-		userMenu.addChildMenuItems(new MenuItem("example", "Example", Example));
+		MyMenuRegisterer.registerCommonMenu(new MenuItem("play", "Play", Level));
 
 	}
 
