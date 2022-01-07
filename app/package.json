@@ -47,6 +47,7 @@
 		"csv": "^5.5.0",
 		"date-holidays": "^3.8.3",
 		"expo": "~40.0.0",
+		"expo-ads-admob": "~8.4.0",
 		"expo-cli": "^4.11.0",
 		"expo-linear-gradient": "^9.1.0",
 		"expo-splash-screen": "~0.8.0",

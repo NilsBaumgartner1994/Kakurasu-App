@@ -3,6 +3,7 @@ import {Skeleton, Text, View} from "native-base";
 import {Kakurasu} from "kakurasu";
 import {Field} from "./Field";
 import {TouchableOpacity, Vibration} from "react-native";
+import App from "../../KitchenHelper/App";
 
 const size = 50;
 
@@ -25,13 +26,8 @@ export const Game = (props) => {
 
 	async function loadNewGame() {
 		let newGame = new Kakurasu();
-		/**
-		let amountPlayedGames = await GameData.getAmountPlayedGames();
-		this.setState({
-			amountPlayedGames: amountPlayedGames
-		});
+		let amountPlayedGames = await App.storage.get("amountPlayedGames");
 	    setAmountPlayedGames(amountPlayedGames);
-	     */
 		await updateGame(newGame);
 	}
 
@@ -95,6 +91,10 @@ export const Game = (props) => {
 		let isGameWon = game.isGameWon();
 		if(isGameWon){
 			vibrateGameWon();
+			let numberamountPlayedGames = parseInt(amountPlayedGames) || 0;
+			numberamountPlayedGames++;
+			setAmountPlayedGames(numberamountPlayedGames+"")
+			App.storage.set("amountPlayedGames", numberamountPlayedGames);
 		}
 	}
 
@@ -263,6 +263,7 @@ export const Game = (props) => {
 			tools.push(renderRedo());
 			tools.push(renderUndo());
 		}
+		tools.push(renderToolButton(amountPlayedGames, "game", () => {}));
 
 		return (
 			<View
